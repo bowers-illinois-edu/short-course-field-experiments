@@ -470,7 +470,7 @@
 
 \fancypagestyle{myfancy}{%
 \fancyhf{}
-\fancyfoot[R]{\flushleft\footnotesize{Future Politics --- PS 374 Syllabus --- Fall 2020 --- Version of \today ---  Page \thepage}}
+\fancyfoot[C]{\flushright\footnotesize{Field Experiments Short Course --- EUI Summer 2021 --- Version of \today ---  Page \thepage}}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
 
