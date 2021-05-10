@@ -8,10 +8,10 @@
 
 \setlist{nolistsep}
 
-\usepackage{lscape}
-\newcolumntype{r}{>{\hsize=0.9\hsize}X}
-\newcolumntype{w}{>{\hsize=0.6\hsize}X}
-\newcolumntype{m}{>{\hsize=.9\hsize}X}
+%\usepackage{lscape}
+%\newcolumntype{r}{>{\hsize=0.9\hsize}X}
+%\newcolumntype{w}{>{\hsize=0.6\hsize}X}
+%\newcolumntype{m}{>{\hsize=0.9\hsize}X}
 
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\arraystretch}{2.0}
@@ -26,7 +26,7 @@
 
 %To add different lines, you will need to create the new command, e.g. \profPhone, in the .cls file c. line 76, and command to create the line in the side bar in the .cls file c. line 186
 
-\classname{Field Experiments \\ \footnotesize{Version of \today} \\ (DRAFT)}
+\classname{Field Experiments\\ \footnotesize{Version of \today} \\ (DRAFT)}
 \classnum{EUI Short Course \\ Summer 2021}
 
 %%%%%%%%%%%%%%% PROF INFO
@@ -86,37 +86,74 @@
 %	 DESCRIPTION
 %----------------------------------------------------------------------------------------
 
-\makeprofile % Print the sidebar
+\makeprofile% Print the sidebar
 
 %----------------------------------------------------------------------------------------
 %	 OVERVIEW
 %----------------------------------------------------------------------------------------
 \section{Overview}
 
+This short course aims to help social scientists to create randomized
+experimental designs and to analyze the data arising from such studies.
+Because we focus on randomized field experiments, and because each field
+experiment is unique in its context and challenges, the course emphasizes
+statistical theory that would empower scholars to make creative choices in
+design and analysis. The course relies on simulation using the R statistical
+computing environment to develop intuitions about randomization, testing,
+estimation, and statistical power.
+
 
 
 \subsection{Learning Objectives}
-
-This course aims to help graduate students in the social sciences to create
-experimental designs and to analyze the data arising from experiments. Because
-we focus on field experiments, and because each field experiments is unique in
-its context and challenges, we emphasize the statistical theory that would guide 
-
 %use \begin{outline} or \begin{outline}[enumerate] to create a list with subitems.
+
+By the end of the class, I hope that students will be able to answer the following questions:
+
 \begin{itemize}
-    \item Understand why one might manipulate an intervention so that some people or groups of people receive it and others do not. And understand the ethics of experimentation: harm to people, benefits to society.
-    \item Understand the concepts of counterfactual causal inference and relate them to the task of learning about social science theories.
-    \item Understand how randomization relates to counterfactual causal inference.
-    \item Understand how randomization and experimental design can justify hypothesis testing choices and how hypothesis tests play a role in detecting causal effects.
-    \item Undersand the concepts of power and false positive rates of hypothesis tests
-    \item Understand how estimation can justify estimation choices and how estimation plays a role in detecting causal effects
-    \item Understand the concepts of bias and precision of estimation.
-    \item Understand the relationship between confidence intervals and hypothesis tests (and thus, how to use confidence intervals in power calculations in experimental design).
-    \item Understand the Complier Average Causal Effect or Local Average Treatment Effect and how to estimate it.
-    \item Undersand the problems that arise from missing data on outcomes or missing data on covariates.
-    \item Understand the uses of covariates in increasing the power of hypothesis tests and/or the precision of estimation in randomized experiments.
-    \item Understand the use of pre-analysis plans.
+    \item Why would a social scientist manipulate an intervention so that some
+        people or groups of people receive it and others do not? When might we
+        \emph{not} want to experiment?  What are common approaches to
+        preventing harm to experimental subjects?
+    \item What does "X causes Y" mean in the counterfactual causal framework?
+        What is a "potential outcome"? How might learning about counterfactual
+        causal relationships help us understand our theories better? 
+    \item Why might we use randomization to learn about counterfactual causal
+        relationships?
+    \item How might randomization and experimental design justify hypothesis
+        testing choices? How might hypothesis tests play a role in helping us
+        detecting causal effects?
+    \item What is statistical power? What is the false positive rate of a
+        hypothesis test? What is the family wise error rate of multiple
+        hypothesis tests? Why should we care about these kinds of
+        characteristics of tests?
+    \item How might randomization and experimental design justify estimation
+        choices? How might estimation play a role in learning about causal
+        effects?
+    \item What is bias in an estimator? What is precision of an estimator? Why
+        should we care about these kinds of characteristics of estimators?
+    \item What is the relationship the relationship between confidence
+        intervals and hypothesis tests?     
+    \item What is the Complier Average Causal Effect or Local Average Treatment Effect? When might we want to learn about this causal effect? How might we use estimation and/or testing to learn about it?
+    \item What are some useful tactics for dealing with the problems that arise from missing data on outcomes versus missing data on covariates?
+    \item How might one use of covariates to increasing the power of hypothesis tests and/or the precision of estimation in randomized experiments either in the design phase or outcome analysis phase of the research?
+    \item What is a pre-analysis plans? Why do researchers and organizations use them?
 \end{itemize}
+
+I also hope that student will have sketched a research design for a randomized experiment following the \href{https://egap.github.io/theory_and_practice_of_field_experiments/the-research-design-process.html}{EGAP Research Design Form}.
+
+\subsection{Class Plans}
+
+I have found that methods classes are most fun when a student has a project to
+which the material might be directly applied.
+
+I have also found that they are most fun when the class sessions are filled
+with questions and discussion.
+
+Because we only have a week, I will probably begin each session with about 30
+mins of presentation, allowing for an hour of discussion from the class. And
+then another hour of work by students on on their own research designs ---
+where I am available for discussion and to help confront the many code errors
+that will arise.
 
 
 %\newpage % Start a new page
@@ -144,78 +181,129 @@ its context and challenges, we emphasize the statistical theory that would guide
 \begin{center}
     %\begin{tabularx}{\textwidth}{>{\raggedright}p{2.5cm}  @{\hskip 0.5cm} >{\raggedright}p{7.5cm}>{\raggedright\arraybackslash}p{9.5cm}} %change the width of the comments by changing these cm measurements. Add/substract columns by adding/deleting p{} sections.
     %\begin{tabular}{>{\raggedright}p{2.5cm}  @{\hskip 0.5cm} >{\raggedright}p{7.5cm}>{\raggedright\arraybackslash}p{9.5cm}}        \arrayrulecolor{myCOLOR}\toprule
-    \begin{longtable}{>{\raggedright}p{2.5cm}  @{\hskip 0.5cm} >{\raggedright}p{6cm}>{\raggedright\arraybackslash}p{11cm}}        \arrayrulecolor{myCOLOR}\toprule
+    \begin{longtable}{>{\raggedright}p{1.5cm} @{\hskip 0.25cm} >{\raggedright} p{10cm} >{\raggedright\arraybackslash} p{8cm}} \arrayrulecolor{myCOLOR} \toprule
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MODULE 1
-       % \multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large MODULE 1: Fiction, Scenarios, Prototypes to help us think about politics, society and economics.}}} \\ %\hline
+        % \multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large MODULE 1: Fiction, Scenarios, Prototypes to help us think about politics, society and economics.}}} \\ %\hline
         % Week & Topic & Readings \\ \hline
         %%Alternatively, instead of Week #, you can do Class date for meeting
         %\SetDate[25/08/2020] \DayOfWeek, \themonth~\the\day  & Introduction to the course and each other &
+        \syldate{\today}  & Introductions, Causal Inference, Randomization 
 
-        \syldate{\today}  & Introduction to the course and each other 
-         Topics
         \begin{itemize}
-            \item What is a randomized control trial?
-            \item How do experiments fit into the research design process?
-            \item What do we mean by ``causal inference''?
-            \item What is the role of randomization in causal inference?
+            \item Introduction to the course and each other
+            \item Why would a social scientist manipulate an intervention so
+                that some people or groups of people receive it and others do
+                not? When might we \emph{not} want to experiment?  What are
+                common approaches to preventing harm to experimental subjects?
+            \item What does "X causes Y" mean in the counterfactual causal
+                framework? What is a "potential outcome"? How might learning
+                about counterfactual causal relationships help us understand
+                our theories better? 
+            \item Why might we use randomization to learn about counterfactual
+                causal relationships?
+            \item How to use R to randomly assign units in different types of randomized designs: simple, complete, blocked, clustered.
         \end{itemize}
-
-
                           & 
+                          Read:
+                          \begin{itemize}
+                              \item \cite{gerber2012field}[Chapter 1 and 2]
+                              \item \cite{bowersVoorsIchino2021book}[Modules on Causal Inference and Randomization] (See also the links to EGAP Methods Guides)
+                              \item \cite{rosenbaum2017}[Chapter 1 and 2]
+                          \end{itemize}
 
-       
-        Read:
-        \begin{itemize}
+                          \\ \midrule
 
-            \item \cite{gerber2012field}[Chapter 1 and 2]
+                          %\DayOfWeek, \themonth~\the\day & Introduction to the course and each other & \\ %\midrule
+                          \AdvanceDate[1] \syldate{\today}  & Statistical Inference about Causal Effects: Hypothesis Testing and Estimation
 
-            \item  \cite{bowersVoorsIchino2021book}[Module 2 and 3]
+     \begin{itemize}
+         \item Why test a hypothesis to learn about the causal effect of an
+             experimental intervention?
+         \item How might randomization and experimental design justify hypothesis testing choices?  How might hypothesis tests play a role in helping us detecting causal effects?
+         \item What is the false positive rate of a hypothesis test?  What is the family wise error rate of multiple hypothesis tests? Why should we care about these characteristics of tests?
+         \item Why estimate an average causal effect?
+         \item How might randomization and experimental design justify estimation choices? How might estimation play a role in learning about causal effects?
+         \item What is bias in an estimator? What is precision of an estimator? Why should we care about these kinds of characteristics of estimators?
+         \item What is the relationship the relationship between confidence intervals and hypothesis tests?     
+         \item (Maybe) How might one use covariates to increase the power of hypothesis tests and/or the precision of estimation in randomized experiments either in the design phase or outcome analysis phase of the research?
+         \item How to use R to test hypotheses about counterfactual causal effects in randomized experiments.
+         \item How to use R to estimate average counterfactual causal effects in randomized experiments.
+     \end{itemize}
 
-            \item  \cite{rosenbaum2017}[Chapter 1 and 2]
-        \end{itemize}
+                 &  
+                 Read: 
+                 \begin{itemize}
+                     \item \cite{rosenbaum2017}[Chapter 3]
+                     \item \cite{bowersVoorsIchino2021book}[Module on Hypothesis testing] (Including links to EGAP Guides)
+                                                                                          \item \cite{gerber2012field}[Chapter 3 \& 4]
+                    \item \cite{bowersVoorsIchino2021book}[Module on Estimation]  (Including links to EGAP Guides)
+                    \item (Maybe) \cite{bowers2020causality}
+                 \end{itemize}
+                 \\ 
+                                                            \midrule
 
-              \\ \midrule
+                          \AdvanceDate[1] \syldate{\today} & Power
+                          \begin{itemize}
+                              \item What is statistical power? Why should we care about statistical power? 
+                              \item How to do power analysis using R and DeclareDesign?
+                          \end{itemize}
 
-        %\DayOfWeek, \themonth~\the\day & Introduction to the course and each other & \\ %\midrule
-        \AdvanceDate[1] \syldate{\today}  & Hypothesis Testing &  Read 
-         \begin{itemize}
-            \item \cite{rosenbaum2017}[Chapter 3]
-            \item \cite{bowersVoorsIchino2021book}[Module on Hypothesis testing]
-            \item \href{https://egap.org/resource/10-things-to-know-about-hypothesis-testing/}{EGAP Hypothesis Testing Guide}
-            \item \href{https://egap.org/resource/10-things-to-know-about-multiple-comparisons/}{EGAP Multiple Comparisons Guide}
-        \end{itemize}
-\\ 
-                                          \midrule
+                                                           &  Read:
+                                                           \begin{itemize}
+                                                               \item \cite{bowersVoorsIchino2021book}[Module on Statistical Power] (see also the EGAP Methods Guides linked therein)
+                                                               \item Something from the \href{https://declaredesign.org}{DeclareDesign website} or \href{https://book.declaredesign.org}{DeclareDesign book}
+                                                           \end{itemize}
+                                                           \\ \midrule
 
-       % \multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large MODULE 2: Politics, Parties, Leaders}}} \\ %\hline
+                          \AdvanceDate[1]\syldate{\today} & Non-Compliance \& Missing Data 
 
-        \AdvanceDate[1] \syldate{\today} & Power &  \cite{bowersVoorsIchino2021book}[Module on Statistical Power] \\ \midrule
+                          \begin{itemize}
+                              \item What is the Complier Average Causal Effect or Local Average Treatment Effect? When might we want to learn about this causal effect? How might we use estimation and/or testing to learn about it?
+                              \item What are some useful tactics for dealing with the problems that arise from missing data on outcomes versus missing data on covariates?
+                              \item How to estimate and test hypotheses about the CACE/LATE using R?
+                          \end{itemize}
 
-        \AdvanceDate[1] \syldate{\today} & Estimation & Estimators, Estimates, ATE, LATE/CACE \\ \midrule
+  & 
+  Read:
+  \begin{itemize}
+      \item \cite{gerber2012field}[Chapter 5 and 6]
+      \item \cite{bowersVoorsIchino2021book}[Module on Threats]
+  \end{itemize}
 
-        \AdvanceDate[1]\syldate{\today} & Missing Data & Read  
-        \\ \midrule
+  \\ \midrule
 
-        \AdvanceDate[1]\syldate{\today} & Workshop & Workshop \\ 
-        
-        \bottomrule
-    \end{longtable}
-\end{center}
+                          \AdvanceDate[1]\syldate{\today} & Pre-analysis plans \& Workshop 
 
-%----------------------------------------------------------------------------------------
+                          \begin{itemize}
+                              \item What is a pre-analysis plan? Why do researchers and organizations use them?
+                              \item (Depending on class size) Students present research designs for class discussion.
+                          \end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	 READING MATERIAL
-%----------------------------------------------------------------------------------------
-\vspace{0.5cm} %I make liberal use of the \vspace{} command to partition and place sections just how I want them. Alter as you see fit.
-\pdfbookmark[0]{Bibliography}{bibliography} \section{Readings}
-%\defbibnote{note}{Here are some additional references for further reading}
 
-%\printbibliography[title={Sources},prenote=note]
+                                                          & Read:
+                                                          \begin{itemize}
+                                                              \item \href{https://egap.org/resource/10-things-to-know-about-pre-analysis-plans/}{EGAP guide to Pre-Analysis Plans}
+                                                          \end{itemize}
+                                                          \\ 
 
-\printbibliography[heading=none]
+                                                          \bottomrule
+                      \end{longtable}
+                  \end{center}
 
-\end{document}
+                  %----------------------------------------------------------------------------------------
+
+                  %----------------------------------------------------------------------------------------
+                  %	 READING MATERIAL
+                  %----------------------------------------------------------------------------------------
+                  \vspace{0.5cm} %I make liberal use of the \vspace{} command to partition and place sections just how I want them. Alter as you see fit.
+                  \pdfbookmark[0]{Bibliography}{bibliography} \section{Readings}
+                  %\defbibnote{note}{Here are some additional references for further reading}
+
+                  %\printbibliography[title={Sources},prenote=note]
+
+                  \printbibliography[heading=none]
+
+                  \end{document}
 
 
 
