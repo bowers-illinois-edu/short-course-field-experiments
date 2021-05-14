@@ -177,11 +177,11 @@
 
 		%------------------------------------------------
 
-		{\Huge\color{myCOLOR}\classname}
+		{\Large\color{myCOLOR}\classname}
 
 		%------------------------------------------------
 
-		{\Large\color{myCOLOR}\classnum}
+		{\normalsize\color{myCOLOR}\classnum}
 
 		%------------------------------------------------
 
@@ -195,10 +195,11 @@
         \begin{tabular}{p{0.5cm} @{\hskip 0.5cm} >{\raggedright\arraybackslash} p{5cm}}
         	\ifthenelse{\equal{\profname}{}}{}{\textsc{\large\icon{\faUser}} & \profname \\}
 			\ifthenelse{\equal{\officehours}{}}{}{\textsc{\large\iconhalf{\ClockLogo}} & \officehours\\}
-			\ifthenelse{\equal{\office}{}}{}{\textsc{\large\iconhalf{\faMapMarker}} & \office\\}
+		%	\ifthenelse{\equal{\office}{}}{}{\textsc{\large\iconhalf{\faMapMarker}} & \office\\}
 % 			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\Large\icon{\Telefon}} & \cvnumberphone\\}
 			\ifthenelse{\equal{\site}{}}{}{\textsc{\Large\iconhalf{\faInfo}} & \site\\}
-			\ifthenelse{\equal{\email}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\email}{\email}}
+			%\ifthenelse{\equal{\email}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\email}{\email}}
+			\ifthenelse{\equal{\email}{}}{}{\large\iconhalf{\faEnvelope} & \href{mailto:\email}{\email}}
 		\end{tabular}
 
         \profilesection{\vspace{0.5cm} Course Info}
@@ -208,7 +209,23 @@
             \ifthenelse{\equal{\classdays}{}}{}{\textsc{\iconhalf{\faCalendarO}} & \classdays\\}
             \ifthenelse{\equal{\classhours}{}}{}{\textsc{\large\iconhalf{\ClockLogo}} & \classhours\\}
             \ifthenelse{\equal{\classloc}{}}{}{\textsc{\large\iconhalf{\faMapMarker}} & \classloc\\}
+            \ifthenelse{\equal{\classinfo}{}}{}{\textsc{\large\iconhalf{\faEdit}} & \classinfo\\}
             \end{tabular}
+
+        \profilesection{\vspace{0.5cm} FAQs }
+
+        \begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
+        	\ifthenelse{\equal{\qOne}{}}{}{\textsc{\large\icon{\faQuestion}} & \qOne\\}
+            \ifthenelse{\equal{\aOne}{}}{}{ & \aOne\\}
+%             \ifthenelse{\equal{\faqLine}{}}{}{\noindent\rule{2cm}{0.4pt} & \\}
+            \ifthenelse{\equal{\qTwo}{}}{}{\textsc{\large\icon{\faQuestion}} & \qTwo\\}
+            \ifthenelse{\equal{\aTwo}{}}{}{ & \aTwo\\}
+           %\ifthenelse{\equal{\qThree}{}}{}{\textsc{\Large\icon{\faQuestion}} & \Large\qThree\\}
+           % \ifthenelse{\equal{\aThree}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aThree\\}
+           % \ifthenelse{\equal{\qFour}{}}{}{\textsc{\Large\icon{\faQuestion}} & \Large\qFour\\}
+           % \ifthenelse{\equal{\aFour}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aFour\\}
+		\end{tabular}
+
 
         %% \profilesection{ \vspace{0.5cm}Lab Info}
         %%
